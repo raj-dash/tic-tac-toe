@@ -15,6 +15,19 @@ void drawBoard() {
     cout << "   |   |   " << endl;
 }
 
+void placeMarker(int slot) {
+    int row = slot / 3;
+    int col;
+    
+    if (slot % 3 == 0) {
+        row = row = 1;
+        col = 2;
+    } else {
+        col = (slot % 3) - 1;
+    }
+}
+
 int main() {
     drawBoard();
+    placeMarker(8);
 }
