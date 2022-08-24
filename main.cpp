@@ -20,7 +20,7 @@ void drawBoard() {
 }
 
 // this is a function to place the marker on the players input
-void placeMarker(int slot) {
+bool placeMarker(int slot) {
     int row = slot / 3;
     int col;
     
@@ -31,7 +31,12 @@ void placeMarker(int slot) {
         col = (slot % 3) - 1;
     }
 
+    if (board[row][col] != 'X' && board[row][col] != 'O'){
     board[row][col] = current_marker;
+    return true;
+    } else {
+        return false;
+    }
 }
 
 // this is a function to check if a player has won or the game has been drawn
@@ -89,7 +94,17 @@ void game() {
         int slot;
         cin >> slot;
 
-        placeMarker(slot);
+        if (slot < 1 || slot > 9) {
+            cout << "That slot is invalid, please choose another" << endl;
+            i--;
+            continue;
+        }
+
+        if(!placeMarker(slot)) {
+            cout << "That slot is already taken, please choose another" << endl;
+            i--;
+            continue;
+        }
         drawBoard();
 
         winner = checkWin();
