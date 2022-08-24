@@ -3,6 +3,9 @@ using namespace std;
 
 char board[3][3] = {{'1', '2', '3'}, {'4', '5', '6'}, {'7', '8','9'}};
 
+char current_marker;
+int current_player;
+
 void drawBoard() {
     cout << "   |   |   " << endl;
     cout << ' ' << board[0][0] << " | " << board[0][1] << " | " << board[0][2] << endl;
@@ -25,9 +28,14 @@ void placeMarker(int slot) {
     } else {
         col = (slot % 3) - 1;
     }
+
+    board[row][col] = current_marker;
 }
 
 int main() {
     drawBoard();
+    current_marker = 'X';
     placeMarker(8);
+    cout << endl << endl << endl;
+    drawBoard();
 }
