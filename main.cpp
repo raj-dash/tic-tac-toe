@@ -79,9 +79,11 @@ void swap_player_and_marker() {
 
 // function with the actual logic of the game
 void game() {
-    cout << "Player 1, choose your marker (X or O) :" << endl;
     char marker_p1;
-    cin >> marker_p1;
+    do {
+        cout << "Player 1, choose your marker (X or O) :" << endl;
+        cin >> marker_p1;
+    } while (marker_p1 != 'X' && marker_p1 != 'O');
     int winner;
 
     current_player = 1;
